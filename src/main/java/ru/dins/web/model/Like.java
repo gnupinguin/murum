@@ -17,11 +17,16 @@ import java.util.UUID;
 @Table
 public class Like {
     @PrimaryKey @NonNull
-    private UUID id;
-
-    @NonNull
     private UUID postId;
 
-    private int count;
+    private int counter;
+
+    public int increase(){
+        return ++counter;
+    }
+
+    public int decrease(){
+        return --counter;
+    }
 
 }
