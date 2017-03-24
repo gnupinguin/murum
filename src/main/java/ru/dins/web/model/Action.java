@@ -7,28 +7,23 @@ import lombok.NonNull;
 import org.springframework.data.cassandra.mapping.PrimaryKey;
 import org.springframework.data.cassandra.mapping.Table;
 
+import java.util.Date;
 import java.util.UUID;
 
 /**
- * Created by gnupinguin on 17.03.17.
+ * Created by gnupinguin on 24.03.17.
  */
-@Data
-@NoArgsConstructor @AllArgsConstructor
-@Table
-public class Like {
+@Table @Data @NoArgsConstructor @AllArgsConstructor
+public class Action {
     @PrimaryKey @NonNull
+    private UUID id;
+
+    @NonNull
     private UUID postId;
 
-    private int counter;
+    @NonNull
+    private String type;
 
-    public Like increase(){
-        counter++;
-        return this;
-    }
-
-    public Like decrease(){
-        counter--;
-        return this;
-    }
-
+    @NonNull
+    private Date actionTime;
 }

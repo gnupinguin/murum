@@ -1,0 +1,9 @@
+package ru.dins.web.model;
+
+/**
+ * Created by gnupinguin on 24.03.17.
+ */
+public enum ActionType {
+    LIKE, ADD, EDIT;
+
+}
