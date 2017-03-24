@@ -1,6 +1,7 @@
 package ru.dins.web.controller;
 
 import com.datastax.driver.core.utils.UUIDs;
+import javafx.geometry.Pos;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,15 +17,7 @@ import java.util.UUID;
 
 
 @Controller
-public class ServerController {
-
-    private Calendar calendar = Calendar.getInstance();
-
-    @Autowired
-    private PostRepository postRepository;
-
-    @Autowired
-    private LikeRepository likeRepository;
+public class ServerController extends BaseController {
 
     @RequestMapping("/")
     public String login(){
@@ -38,8 +31,11 @@ public class ServerController {
     public String add(String author, String text){
         Date creationTime = new Date(calendar.getTime().getTime());
         UUID id = UUIDs.timeBased();
-        postRepository.save(new Post(id, author, creationTime, creationTime, 0, text));
+        Post post = new Post(id, author, creationTime, creationTime, 0, text);
+        postRepository.save(post);
         likeRepository.save(new Like(id, 0));
+
+        actionRepository.addPostAction(post);
 
         return "redirect:/home";
     }
@@ -62,6 +58,7 @@ public class ServerController {
         post.setModificationTime(modificationTime);
         post.setText(text);
         postRepository.save(post);
+        actionRepository.addEditPostAction(post);
 
         return "redirect:/home";
     }

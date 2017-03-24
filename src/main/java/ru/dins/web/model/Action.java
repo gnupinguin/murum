@@ -22,6 +22,9 @@ public class Action {
     private UUID postId;
 
     @NonNull
+    private String author;
+
+    @NonNull
     private String type;
 
     @NonNull
