@@ -51,4 +51,10 @@ public class RestfulServerController extends BaseController {
         return actionRepository.getHistory();
     }
 
+    @RequestMapping(value = "/like-info", params = {"id"})
+    public int likeInfo(String id){
+        UUID postId = UUID.fromString(id);
+        return likeRepository.findOne(postId).getCounter();
+    }
+
 }
