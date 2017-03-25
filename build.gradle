@@ -30,5 +30,20 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.5.2.RELEASE'
+	compile group: 'cglib', name: 'cglib', version: '3.2.5'
+	compile group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '1.5.2.RELEASE'
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '1.5.2.RELEASE'
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '1.5.2.RELEASE'
+	// https://mvnrepository.com/artifact/org.springframework.security.oauth/spring-security-oauth2
+	compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version: '2.1.0.RELEASE'
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
+	compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '1.5.2.RELEASE'
+	// https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-configuration-processor
+	compile group: 'org.springframework.boot', name: 'spring-boot-configuration-processor', version: '1.5.2.RELEASE'
+	// https://mvnrepository.com/artifact/org.webjars/webjars-locator
+	compile group: 'org.webjars', name: 'webjars-locator', version: '0.32'
+	// https://mvnrepository.com/artifact/org.webjars/bootstrap
+	compile group: 'org.webjars', name: 'bootstrap', version: '3.3.5'
 
 }
