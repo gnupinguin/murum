@@ -20,9 +20,12 @@
 								<h2><a href="#">${note.name}</a></h2>
 								<p>${note.author}</p>
 							</header>
+
 							<div class="info">
 								<ul class="stats">
-									<li><a href="#" class="icon fa-heart">${likes.counter}</a></li>
+										<button class="like" onclick='$.post("/like",{id:"1",action:"1"},function(data){$('#post_id_${note.id}').html(data)})'>Like
+											<span class="likes" id="post_id_${note.id}">0</span>
+										</button>
 									<li><a href="#" class="icon fa-edit"></a></li>
 								</ul>
 							</div>

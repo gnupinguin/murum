@@ -38,7 +38,6 @@ public class RestfulServerController {
     @RequestMapping(value = "/like", params = {"id", "action"})
     public void like(String id, boolean action){
         UUID postId = UUID.fromString(id);
-
         Like like = likeRepository.findOne(postId);
 
         if (action){
