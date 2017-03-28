@@ -33,7 +33,6 @@ public class RestfulServerController extends BaseController {
     public void like(String id, String author, boolean action){
         Date actionDate = new Date(calendar.getTimeInMillis());
         UUID postId = UUID.fromString(id);
-
         Like like = likeRepository.findOne(postId);
 
         if (action){
