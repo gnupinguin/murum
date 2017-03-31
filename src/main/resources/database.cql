@@ -24,7 +24,7 @@ CREATE TABLE murumkeyspace.post (
 
 DROP TABLE IF EXISTS murumkeyspace.like;
 CREATE TABLE murumkeyspace.like (
-    postid uuid PRIMARY KEY,
+    post_id uuid PRIMARY KEY,
     counter int
 );
 
