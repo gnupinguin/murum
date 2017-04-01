@@ -7,9 +7,10 @@ CREATE TABLE murumkeyspace.action (
     user_id uuid,
     post_id uuid,
     type text,
-    PRIMARY KEY (user_id, action_time)
+    PRIMARY KEY ((user_id), action_time, id)
 ) WITH CLUSTERING ORDER BY (action_time DESC);
-CREATE INDEX post_action ON murumkeyspace.action(post_id);
+CREATE INDEX action_post_id ON murumkeyspace.action(post_id);
+CREATE INDEX action_id ON murumkeyspace.action(id);
 
 DROP TABLE IF EXISTS murumkeyspace.post;
 CREATE TABLE murumkeyspace.post (
@@ -19,8 +20,9 @@ CREATE TABLE murumkeyspace.post (
     modification_time timestamp,
     content text,
     version int,
-    PRIMARY KEY(user_id, modification_time)
+    PRIMARY KEY((user_id), modification_time, id)
 )WITH CLUSTERING ORDER BY (modification_time DESC);
+CREATE INDEX post_id ON murumkeyspace.post(id);
 
 DROP TABLE IF EXISTS murumkeyspace.like;
 CREATE TABLE murumkeyspace.like (
@@ -47,9 +49,9 @@ INSERT INTO murumkeyspace.post JSON '{"id": "1936cb10-1450-11e7-a4b4-6758eeaf42a
 
 
 INSERT INTO murumkeyspace.action JSON '{"id": "4e4e66a0-13ec-11e7-9f4f-d35384f14027", "post_id": "28b75590-13ed-11e7-9afb-d35384f14027", "action_time": "2017-03-29 13:31:36.937Z", "user_id": "01ba3850-1450-11e7-a164-d35384f14027", "type": "LIKE"}';
-INSERT INTO murumkeyspace.action JSON '{"id": "4e4e66a0-13ec-11e7-9f4f-d35384f14027", "post_id": "28b75590-13ed-11e7-9afb-d35384f14027", "action_time": "2017-03-29 13:31:36.937Z", "user_id": "01ba3850-1450-11e7-a164-d35384f14027", "type": "LIKE"}';
 
 
-INSERT INTO murumkeyspace.like (postid, counter) VALUES ( 28b75590-13ed-11e7-9afb-d35384f14027, 1);
+
+INSERT INTO murumkeyspace.like (post_id, counter) VALUES ( 28b75590-13ed-11e7-9afb-d35384f14027, 1);
 
 INSERT INTO murumkeyspace.user JSON '{"id": "01ba3850-1450-11e7-a164-d35384f14027", "email": "ilja.pavlov32@gmail.com", "nickname": "Ilja Pavlov"}';
