@@ -4,32 +4,28 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
+import org.springframework.data.cassandra.mapping.Column;
 import org.springframework.data.cassandra.mapping.PrimaryKey;
 import org.springframework.data.cassandra.mapping.Table;
+import ru.dins.web.model.keys.PostPrimaryKey;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
 
 /**
- * Created by gnupinguin on 17.03.17.
+ * @author Ilja Pavlov
  */
 @Table @Data @NoArgsConstructor @AllArgsConstructor
-public class Post {
+public class Post implements Serializable{
+    @NonNull @PrimaryKey
+    PostPrimaryKey key;
 
-    @PrimaryKey
-    private UUID id;
-
-    @NonNull
-    private String author;
-
-    @NonNull
+    @NonNull @Column("creation_time")
     private Date creationTime;
-
-    @NonNull
-    private Date modificationTime;
 
     private int version;
 
     @NonNull
-    private String text;
+    private String content;
 }

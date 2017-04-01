@@ -6,8 +6,8 @@ spring:
 security:
   oauth2:
     client:
-      clientId: XXXXXXXXXX
-      clientSecret: XXXXXXXXXXXXXXXXXXXXXXXXXXX
+      clientId: 1144144765707808
+      clientSecret: 3fa5732f6a4055aab9420cc9e1e0f7d0
       accessTokenUri: https://graph.facebook.com/oauth/access_token
       userAuthorizationUri: https://www.facebook.com/dialog/oauth
       tokenName: oauth_token
@@ -16,6 +16,3 @@ security:
       scope: email
     resource:
       userInfoUri: https://graph.facebook.com/me
-murum:
-  user:
-    email: ilja.pavlov32@gmail.com
