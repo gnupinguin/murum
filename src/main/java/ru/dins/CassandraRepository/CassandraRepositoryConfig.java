@@ -20,22 +20,12 @@ public class CassandraRepositoryConfig{
 
     @Bean
     public Cluster MyCassandraCluster(){
-        System.err.println("Cassandra cluster");
         Cluster cluster = Cluster.builder().addContactPoint(CONTACT_POINTS).build();
         return cluster;
     }
-//    @Bean
-//    public Session MySession(){
-//        System.err.println("Cassandra session");
-//        return MyCassandraCluster().connect(KEYSPACE_NAME);
-//    }
-//    public Session setSesssion(@NonNull String keyspaceName){
-//        return MyCassandraCluster().connect(keyspaceName);
-//    }
 
     @Bean
     public CassandraTemplate MyCassandraTemplate() {
-        System.err.println("Cassandra beeeeeeeeeen");
         //Query
         String queryForPosts = "CREATE TABLE IF NOT EXISTS posts(id UUID PRIMARY KEY, "
                 + "author text, "
@@ -52,13 +42,11 @@ public class CassandraRepositoryConfig{
                 + "credentialsNonExpired Boolean, "
                 + "enabled Boolean ); ";
         Session session = MyCassandraCluster().connect(USERS_KEYSPACE_NAME);
-        System.err.println(MyCassandraCluster());
         session.getCluster().connect(KEYSPACE_NAME);
         session.execute(queryForPosts);
         session.getCluster().connect(USERS_KEYSPACE_NAME);
         session.execute(queryForUsers);
         CassandraTemplate cassandraTemplate = new CassandraTemplate(session);
-        System.err.println("Done");
         return cassandraTemplate;
     }
 
