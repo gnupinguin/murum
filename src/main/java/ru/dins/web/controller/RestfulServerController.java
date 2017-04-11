@@ -1,9 +1,7 @@
 package ru.dins.web.controller;
 
 import org.springframework.data.util.Pair;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import ru.dins.web.model.Action;
 import ru.dins.web.model.Like;
 import ru.dins.web.model.Post;
@@ -29,8 +27,24 @@ public class RestfulServerController extends BaseController {
     }
 
     //считаем, что запрос всегда корректный
+//    @RequestMapping(value = "/like", method= RequestMethod.POST, params = {"id", "action", "author"})
+//    @ResponseBody
+//    public void like(@RequestParam(value = "id") String id, @RequestParam(value = "author") String author, @RequestParam(value = "action") boolean action){
+//        Date actionDate = new Date(calendar.getTimeInMillis());
+//        UUID postId = UUID.fromString(id);
+//        Like like = likeRepository.findOne(postId);
+//
+//        if (action){
+//            likeRepository.save(like.increase());
+//            actionRepository.addLikeAction(postId, author, actionDate);
+//        } else {
+//            likeRepository.save(like.decrease());
+//            actionRepository.addCancellationLikeAction(postId, author, actionDate);
+//        }
+//    }
+
     @RequestMapping(value = "/like", params = {"id", "action", "author"})
-    public void like(String id, String author, boolean action){
+    public void like(String id, String author,  boolean action){
         Date actionDate = new Date(calendar.getTimeInMillis());
         UUID postId = UUID.fromString(id);
         Like like = likeRepository.findOne(postId);

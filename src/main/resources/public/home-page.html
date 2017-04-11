@@ -7,6 +7,7 @@
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
 	</head>
 	<body>
 
@@ -23,7 +24,7 @@
 
 							<div class="info">
 								<ul class="stats">
-										<button class="like" onclick='$.post("/like",{id:"1",action:"1"},function(data){$('#post_id_${note.id}').html(data)})'>Like
+										<button class="like">
 											<span class="likes" id="post_id_${note.id}">0</span>
 										</button>
 									<li><a href="#" class="icon fa-edit"></a></li>
@@ -35,9 +36,9 @@
 						</article>
 
 					<!-- Pagination -->
-						<div class="pagination">
+						<!--<div class="pagination"> -->
 							<!--<a href="#" class="button previous">Previous Page</a>-->
-							<div class="pages">
+							<!--<div class="pages">
 								<a href="#" class="active">1</a>
 								<a href="#">2</a>
 								<a href="#">3</a>
@@ -46,7 +47,7 @@
 								<a href="#">20</a>
 							</div>
 							<a href="#" class="button next">Next Page</a>
-						</div>
+						</div>-->
 
 				</div>
 			</div>
@@ -168,7 +169,10 @@
 			<script src="assets/js/skel.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
-			<script src="assets/js/main.js"></script>
-
+		<script src="assets/js/main.js"></script>
+		<script src="assets/js/index.js"></script>
+	    <script>
+			var USER_ID='38400000-8cf0-11bd-b23e-10b96e4ef00d';
+		</script>
 	</body>
 </html>
