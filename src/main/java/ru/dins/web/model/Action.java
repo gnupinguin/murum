@@ -4,29 +4,28 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.NonNull;
-import org.springframework.data.cassandra.mapping.PrimaryKey;
-import org.springframework.data.cassandra.mapping.Table;
+import org.springframework.data.cassandra.mapping.*;
+import ru.dins.web.model.keys.ActionPrimaryKey;
 
-import java.util.Date;
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
- * Created by gnupinguin on 24.03.17.
+ * @author Ilja Pavlov
  */
 @Table @Data @NoArgsConstructor @AllArgsConstructor
-public class Action {
-    @PrimaryKey @NonNull
-    private UUID id;
+public class Action implements Serializable {
+    @NonNull @PrimaryKey
+    private ActionPrimaryKey key;
 
-    @NonNull
+
+    @NonNull @Column("post_id") @Indexed
     private UUID postId;
 
     @NonNull
-    private String author;
+    private ActionType type;
 
-    @NonNull
-    private String type;
-
-    @NonNull
-    private Date actionTime;
+    public enum ActionType {
+        LIKE, CANCELLATION_LIKE , ADD_POST, EDIT_POST, DELETE_POST,
+    }
 }
